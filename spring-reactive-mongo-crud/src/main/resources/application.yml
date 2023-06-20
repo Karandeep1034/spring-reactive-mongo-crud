@@ -1,9 +1,7 @@
 spring:
   data:
     mongodb:
-      database: Productsdb
-      host: localhost
-      port: 27017
+      uri : mongodb://127.0.0.1:27017
+      database : Task
 
-server:
-  port: 9292
+server.port: 8084

@@ -1,7 +1,6 @@
 package com.example.springreactivemongocrud.service;
 
 import com.example.springreactivemongocrud.dto.ProductDto;
-import com.example.springreactivemongocrud.exception.TaskException;
 import com.example.springreactivemongocrud.repo.ProductRepository;
 import com.example.springreactivemongocrud.utils.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,9 +35,9 @@ public class ProductService {
                 .map(AppUtils::entityToDto);
     }
 
-    public Mono<ProductDto> updateProduct(Mono<ProductDto> productDtoMono,String Id){
+    public Mono<ProductDto> updateProduct(ProductDto productDto,String Id){
         return repository.findById(Id)
-                .flatMap(product -> productDtoMono.map(p-> AppUtils.dtoToEntity(p)))
+                .map(product ->  AppUtils.dtoToEntity(productDto))
                 .doOnNext(e->e.setId(Id))
                 .flatMap(repository::save)
                 .map(entity -> AppUtils.entityToDto(entity));

@@ -12,33 +12,33 @@ import reactor.core.publisher.Mono;
 public class ProductController {
     @Autowired
     private ProductService service;
-    @GetMapping
-    public Flux<ProductDto> getproducts(){
-        return service.getProducts();
-    }
-    @GetMapping("/{id}")
-    public Mono<ProductDto> getProduct(@PathVariable String id){
-        return service.getProductById(id);
-    }
+//    @GetMapping
+//    public Flux<ProductDto> getproducts(){
+//        return service.getProducts();
+//    }
+//    @GetMapping("/{id}")
+//    public Mono<ProductDto> getProduct(@PathVariable String id){
+//        return service.getProductById(id);
+//    }
 
     @GetMapping("/product-range")
     public Flux<ProductDto> getProductBetweenRange(@RequestParam("min") double min,@RequestParam("max") double max){
         return service.getProductInRange(min,max);
     }
 
-    @PostMapping
-    public Mono<ProductDto> saveProduct(@RequestBody Mono<ProductDto> productDtoMono){
-        return service.saveProduct(productDtoMono);
-    }
+//    @PostMapping
+//    public Mono<ProductDto> saveProduct(@RequestBody Mono<ProductDto> productDtoMono){
+//        return service.saveProduct(productDtoMono);
+//    }
 
-    @PutMapping("/update/{id}")
-    public Mono<ProductDto> saveProduct(@RequestBody Mono<ProductDto> productDtoMono, @PathVariable String Id){
-        return service.updateProduct(productDtoMono,Id);
-    }
+//    @PutMapping("/update/{id}")
+//    public Mono<ProductDto> saveProduct(@RequestBody Mono<ProductDto> productDtoMono, @PathVariable String Id){
+//        return service.updateProduct(productDtoMono,Id);
+//    }
 
-    @DeleteMapping("/delete/{id}")
-    public Mono<Void> deleteProduct(@PathVariable String Id){
-        return service.deleteById(Id);
-    }
+//    @DeleteMapping("/delete/{id}")
+//    public Mono<Void> deleteProduct(@PathVariable String Id){
+//        return service.deleteById(Id);
+//    }
 
 }
